@@ -1,10 +1,406 @@
-HTML
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Mi página</title>
-  </head>
-  <body>
-    <h1>¡Hola mundo! Mi página ya funciona.</h1>
-  </body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book - Susana Santiago | Project Manager & Publicista</title>
+    <style>
+        /* Variables de Color y Tipografía */
+        :root {
+            --bg-color: #0d3b44;
+            --card-bg: #134e5a;
+            --accent-color: #8b1e2b;
+            --accent-light: #b33946;
+            --text-color: #ffffff;
+            --text-secondary: #d1e3e5;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Resets básicos */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid var(--accent-color);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        header h2 {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        header .year {
+            display: inline-block;
+            background-color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Sección Grid Perfil */
+        .profile-section {
+            display: table;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .profile-col {
+            display: table-cell;
+            vertical-align: top;
+            padding: 15px;
+        }
+
+        .profile-img-col {
+            width: 35%;
+            text-align: center;
+        }
+
+        .profile-img-col img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .profile-text-col {
+            width: 65%;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #ffffff;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        /* Skills Grid */
+        .skills-header {
+            text-align: center;
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skills-grid {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            margin-bottom: 50px;
+        }
+
+        .skill-card {
+            display: table-cell;
+            background-color: var(--card-bg);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            vertical-align: top;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--accent-light);
+            padding-bottom: 8px;
+        }
+
+        .skill-card ul {
+            list-style-type: square;
+            padding-left: 20px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .skill-card ul li {
+            margin-bottom: 8px;
+        }
+
+        .skill-projects {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px stroke var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .skill-projects strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Valor Profesional & Experiencia */
+        .value-section {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+
+        .value-item {
+            margin-bottom: 20px;
+        }
+
+        .value-item h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .value-item p {
+            color: var(--text-secondary);
+        }
+
+        /* Contacto y Redes */
+        .contact-section {
+            background-color: var(--accent-color);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Placeholder Incrustaciones */
+        .embed-placeholder {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px dashed var(--accent-light);
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 30px 0;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--card-bg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Encabezado Principal -->
+        <header>
+            <h1>Susana Santiago</h1>
+            <h2>Book Profesional</h2>
+            <span class="year">2026</span>
+        </header>
+
+        <!-- Sección Sobre Mí -->
+        <section class="profile-section">
+            <div class="profile-col profile-img-col">
+                <img src="imagen_1.jpg" alt="Susana Santiago - Retrato 1">
+            </div>
+            <div class="profile-col profile-text-col">
+                <h2 class="section-title">Sobre mí</h2>
+                <p class="about-text">
+                    Soy Publicista y Project Manager por convicción. Me mueve convertir ideas en proyectos con mirada creativa, doy estructura y organización, tengo la capacidad de resolución necesaria para llevar una idea desde el concepto hasta la ejecución.
+                </p>
+                <p class="about-text">
+                    A lo largo de mi trayectoria he liderado equipos, coordinado proveedores y recursos, desarrollado estrategias y enfrentado proyectos que no siempre tenían un camino claro; por ello reconozco que mi fortaleza está en encontrarlo.
+                </p>
+                <p class="about-text">
+                    Entender qué necesita un proyecto me permite anticipar obstáculos sin perder de vista a las personas que lo hacen posible. Lograr que las personas, las ideas y los recursos trabajen en la misma dirección, eso hago.
+                </p>
+            </div>
+        </section>
+
+        <!-- Espacio para elemento incrustado de la sección sobre mí/presentación -->
+        <!-- REEMPLAZAR CÓDIGO: Insertar aquí un reproductor de video de presentación o audio si aplica -->
+
+        <!-- Sección SKILLS -->
+        <h2 class="skills-header">Skills</h2>
+        <section class="skills-grid">
+            
+            <!-- Desarrollo de Negocios -->
+            <div class="skill-card">
+                <h3>Desarrollo de Negocios</h3>
+                <ul>
+                    <li>Desarrollo de modelos de negocio</li>
+                    <li>Diseño de servicios y productos</li>
+                    <li>Estrategia comercial</li>
+                    <li>Gestión de equipos</li>
+                    <li>Escalamiento operativo</li>
+                    <li>Retención de clientes</li>
+                    <li>Toma de decisiones basada en resultados</li>
+                </ul>
+                <div class="skill-projects">
+                    <strong>Proyectos:</strong>
+                    <p>Reafirma SPA<br>Dr. Héctor Contreras</p>
+                </div>
+            </div>
+
+            <!-- Operación & Logística -->
+            <div class="skill-card">
+                <h3>Operación & Logística</h3>
+                <ul>
+                    <li>Planeación operativa</li>
+                    <li>Coordinación multidisciplinaria</li>
+                    <li>Gestión de proveedores</li>
+                    <li>Diseño de procesos</li>
+                    <li>Resolución de incidencias</li>
+                    <li>Gestión de tiempos y recursos</li>
+                    <li>Supervisión de eventos</li>
+                </ul>
+                <div class="skill-projects">
+                    <strong>Proyectos:</strong>
+                    <p>Festival de Globo Aerostático "Entre Volcanes"</p>
+                </div>
+            </div>
+
+            <!-- Gestión Financiera -->
+            <div class="skill-card">
+                <h3>Gestión Financiera</h3>
+                <ul>
+                    <li>Auditoría operativa</li>
+                    <li>Control financiero</li>
+                    <li>Optimización de costos</li>
+                    <li>Gestión administrativa</li>
+                    <li>Implementación de controles</li>
+                    <li>Supervisión de nómina</li>
+                    <li>Análisis de procesos</li>
+                </ul>
+                <div class="skill-projects">
+                    <strong>Proyectos:</strong>
+                    <p>The Normal Club Bar</p>
+                </div>
+            </div>
+
+            <!-- Creación de Marcas -->
+            <div class="skill-card">
+                <h3>Creación de Marcas</h3>
+                <ul>
+                    <li>Branding</li>
+                    <li>Estrategia de comunicación</li>
+                    <li>Marketing digital</li>
+                    <li>Desarrollo de contenido</li>
+                    <li>Gestión de reputación</li>
+                    <li>Experiencia del cliente</li>
+                    <li>Posicionamiento de marca</li>
+                </ul>
+                <div class="skill-projects">
+                    <strong>Proyectos:</strong>
+                    <p>Reafirma SPA<br>Dr. Héctor Contreras</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Sección Project Manager & Valor Profesional -->
+        <section class="profile-section">
+            <div class="profile-col profile-text-col">
+                <h2 class="section-title">Project Manager</h2>
+                <p class="about-text">
+                    He convertido ideas en proyectos operativos, mejorando procesos, coordinando equipos y asegurando resultados concretos en tiempo y forma.
+                </p>
+
+                <div class="value-section">
+                    <h3 style="margin-bottom: 15px; text-transform: uppercase;">Valor Profesional</h3>
+                    <div class="value-item">
+                        <h4>Experiencia Probada:</h4>
+                        <p>En la gestión y ejecución de proyectos en entornos reales y académicos, con enfoque en planificación, producción y resultados en marketing y comunicación.</p>
+                    </div>
+                    <div class="value-item">
+                        <h4>Resultados:</h4>
+                        <p>La creación y ejecución de proyectos, eventos y marcas, abarcando desde la planeación hasta la operación, con enfoque en resultados, optimización de procesos y producción de contenido.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-col profile-img-col">
+                <img src="imagen_2.jpg" alt="Susana Santiago - Retrato 2">
+            </div>
+        </section>
+
+        <!-- Sección Proyectos Destacados (Marcador para incrustar galería / portafolio) -->
+        <section>
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <!-- REEMPLAZAR CÓDIGO: Insertar aquí la galería interactiva, sliders o iFrames de los proyectos destacados (Reafirma Spa, Festival entre volcanes, etc.) -->
+            <div class="embed-placeholder">
+                <p><strong>[ÁREA DE PROYECTOS INCRUSTADOS]</strong></p>
+                <p>Reemplazar este bloque por el código HTML/iFrame del portafolio interactivo de proyectos.</p>
+            </div>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section class="contact-section">
+            <h3>¡Trabajemos Juntos!</h3>
+            <div class="contact-info">
+                <p><strong>Redes:</strong> <a href="https://instagram.com/susan.tiagoo" target="_blank">@SUSAN.TIAGOO</a></p>
+                <p><strong>Teléfono:</strong> <a href="tel:2474758126">247 47 5 81 26</a></p>
+                <p><strong>Correo:</strong> <a href="mailto:susansantiagoch@gmail.com">SUSANSANTIAGOCH@GMAIL.COM</a></p>
+            </div>
+            <!-- REEMPLAZAR CÓDIGO: Insertar aquí botón interactivo o formulario de contacto si se requiere -->
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Susana Santiago. Todos los derechos reservados.</p>
+        </footer>
+
+    </div>
+
+</body>
 </html>
