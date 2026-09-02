@@ -14,6 +14,8 @@
             --card-dark-teal: #144f56;
             --accent-red: #8b1e2b;
             --accent-pink: #d94b68;
+            --cactus-green: #2e7d32;
+            --cactus-light: #4caf50;
             --text-white: #ffffff;
             --font-title: 'Caveat', cursive;
             --font-body: 'Montserrat', sans-serif;
@@ -31,11 +33,13 @@
             font-family: var(--font-body);
             line-height: 1.6;
             padding: 30px 15px;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1050px;
             margin: 0 auto;
+            position: relative;
         }
 
         header {
@@ -67,21 +71,38 @@
             margin-top: 10px;
         }
 
-        /* Sección Perfil con la fotografía */
+        /* Sección Perfil con la fotografía y elemento decorativo Cactus */
         .profile-section {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 30px;
             margin-bottom: 60px;
+            position: relative;
         }
 
         .profile-img-container {
             flex: 1 1 350px;
             text-align: center;
+            position: relative;
         }
 
-        /* Estilo con borde troquelado tipo sticker como en el diseño original */
+        /* Elemento cactus decorativo flotante de fondo */
+        .profile-img-container::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            right: -10px;
+            width: 120px;
+            height: 140px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M45,10 C45,4.5 49.5,0 55,0 C60.5,0 65,4.5 65,10 L65,110 C65,115.5 60.5,120 55,120 C49.5,120 45,115.5 45,110 L45,10 Z' fill='%232e7d32' opacity='0.75'/%3E%3Cpath d='M20,35 C20,30 24,26 29,26 C34,26 38,30 38,35 L38,55 C38,60 42,64 47,64 L47,76 C37,76 29,68 29,58 L29,48 C24,48 20,44 20,39 L20,35 Z' fill='%232e7d32' opacity='0.75'/%3E%3Cpath d='M80,45 C80,40 76,36 71,36 C66,36 62,40 62,45 L62,65 C62,70 58,74 53,74 L53,86 C63,86 71,78 71,68 L71,58 C76,58 80,54 80,49 L80,45 Z' fill='%232e7d32' opacity='0.75'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: contain;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Estilo con borde troquelado tipo sticker */
         .profile-img-container img {
             width: 100%;
             max-width: 380px;
@@ -90,10 +111,14 @@
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             background-color: #fff;
+            position: relative;
+            z-index: 2;
         }
 
         .profile-text {
             flex: 2 1 450px;
+            position: relative;
+            z-index: 2;
         }
 
         .section-handwritten-title {
@@ -120,12 +145,33 @@
             margin: 30px 0;
         }
 
-        /* Grilla de Skills */
+        /* Grilla de Skills con divisores temáticos */
+        .skills-header-container {
+            text-align: center;
+            margin: 50px 0 30px;
+            position: relative;
+        }
+
         .skills-header {
             font-family: var(--font-title);
             font-size: 3.5rem;
-            text-align: center;
-            margin: 40px 0 20px;
+            display: inline-block;
+        }
+
+        .cactus-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        .cactus-icon {
+            width: 24px;
+            height: 30px;
+            fill: #ffffff;
+            opacity: 0.85;
         }
 
         .skills-grid {
@@ -160,14 +206,16 @@
         .skill-card ul li {
             margin-bottom: 8px;
             position: relative;
-            padding-left: 15px;
+            padding-left: 18px;
         }
 
+        /* Ícono de nopal/cactus bullet en las listas */
         .skill-card ul li::before {
-            content: "•";
+            content: "🌵";
             position: absolute;
             left: 0;
-            color: var(--accent-pink);
+            font-size: 0.75rem;
+            top: 2px;
         }
 
         .skill-projects {
@@ -242,10 +290,10 @@
             <span class="year-tag">2026</span>
         </header>
 
-        <!-- Sección Sobre Mí con Fotografía Actualizada -->
+        <!-- Sección Sobre Mí con Fotografía Reemplazada -->
         <section class="profile-section">
             <div class="profile-img-container">
-                <img src="image_25cb45.jpg" alt="Susana Santiago">
+                <img src="Gemini_Generated_Image_1na7th1na7th1na7.jpg" alt="Susana Santiago">
             </div>
             <div class="profile-text">
                 <h2 class="section-handwritten-title">Sobre mí</h2>
@@ -263,8 +311,18 @@
 
         <!-- REEMPLAZAR CÓDIGO: Insertar elemento interactivo aquí si se desea -->
 
-        <!-- Sección SKILLS -->
-        <h2 class="skills-header">Skills</h2>
+        <!-- Sección SKILLS con detalles decorativos -->
+        <div class="skills-header-container">
+            <h2 class="skills-header">Skills</h2>
+            <div class="cactus-divider">
+                <svg class="cactus-icon" viewBox="0 0 100 120">
+                    <path d="M45,10 C45,4.5 49.5,0 55,0 C60.5,0 65,4.5 65,10 L65,110 C65,115.5 60.5,120 55,120 C49.5,120 45,115.5 45,110 L45,10 Z" fill="currentColor"/>
+                    <path d="M20,35 C20,30 24,26 29,26 C34,26 38,30 38,35 L38,55 C38,60 42,64 47,64 L47,76 C37,76 29,68 29,58 L29,48 C24,48 20,44 20,39 L20,35 Z" fill="currentColor"/>
+                    <path d="M80,45 C80,40 76,36 71,36 C66,36 62,40 62,45 L62,65 C62,70 58,74 53,74 L53,86 C63,86 71,78 71,68 L71,58 C76,58 80,54 80,49 L80,45 Z" fill="currentColor"/>
+                </svg>
+            </div>
+        </div>
+
         <section class="skills-grid">
             
             <div class="skill-card">
@@ -360,7 +418,7 @@
 
         <!-- Bloque de Proyectos Destacados (Espacio para incrustar elementos) -->
         <section>
-            <h2 class="skills-header">Proyectos Destacados</h2>
+            <h2 class="skills-header" style="display: block; text-align: center;">Proyectos Destacados</h2>
             <!-- REEMPLAZAR CÓDIGO: Insertar aquí iFrame de portafolio, carrusel de imágenes o videos de proyectos -->
             <div class="embed-slot">
                 <p><strong>[ÁREA PARA CONTENIDO INCRUSTADO DE PROYECTOS]</strong></p>
