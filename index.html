@@ -7,7 +7,7 @@
     <!-- Importación de fuentes y Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;600;700;800&family=Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -20,6 +20,7 @@
             --text-dark: #1f363d;
             --font-title: 'Caveat', cursive;
             --font-body: 'Montserrat', sans-serif;
+            --font-typewriter: 'Special Elite', monospace;
         }
 
         * {
@@ -141,7 +142,7 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* --- Ventana Emergente Limpia (Solo la nueva imagen y botón) --- */
+        /* --- Ventana Emergente Estilo Hoja Envejecida y Tipografía de Máquina de Escribir --- */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -154,38 +155,55 @@
             align-items: center;
             z-index: 10000;
             animation: fadeIn 0.5s ease;
+            padding: 20px;
         }
 
-        .modal-content {
-            background: transparent;
-            text-align: center;
-            max-width: 650px;
-            width: 90%;
+        .modal-paper {
+            background-color: #f4efe4;
+            color: #2c221e;
+            font-family: var(--font-typewriter);
+            padding: 45px 50px;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.8), inset 0 0 30px rgba(180, 150, 110, 0.4);
+            border: 1px solid #d5c8b5;
+            position: relative;
+            transform: rotate(-1deg);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 25px;
+            gap: 30px;
+            text-align: left;
         }
 
-        .modal-img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            border-radius: 6px;
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.7));
+        .modal-paper::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(120, 95, 60, 0.15) 100%);
+            pointer-events: none;
+        }
+
+        .modal-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #25201d;
+            text-shadow: 0 0 1px rgba(0,0,0,0.3);
         }
 
         .modal-close-btn {
             background-color: var(--accent-red);
             color: #fff;
             border: none;
-            padding: 12px 35px;
-            font-size: 1.1rem;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-family: var(--font-body);
             font-weight: bold;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            align-self: center;
             border: 1px solid rgba(255,255,255,0.3);
         }
 
@@ -494,15 +512,25 @@
             .closing-quote {
                 font-size: 2.3rem;
             }
+            .modal-paper {
+                padding: 30px 20px;
+            }
+            .modal-text {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Ventana Emergente con la nueva imagen del texto proporcionado -->
+    <!-- Ventana Emergente Estilo Hoja Envejecida y Tipografía de Máquina de Escribir -->
     <div class="modal-overlay" id="welcomeModal">
-        <div class="modal-content">
-            <img src="ChatGPT Image 1 sept 2026, 21_43_17.png" alt="Te sorprenderías de las cosas que he logrado..." class="modal-img">
+        <div class="modal-paper">
+            <div class="modal-text">
+                Te sorprenderías de las cosas que he logrado cuando un proyecto empezó con un simple:<br><br>
+                “¿Y si hacemos…?”<br><br>
+                ...pasale te cuento más
+            </div>
             <button class="modal-close-btn" id="closeModalBtn">Entrar al Book</button>
         </div>
     </div>
