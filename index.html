@@ -434,10 +434,10 @@
             color: #ffffff;
         }
 
-        /* Contacto */
+        /* Sección Contacto Optimizada con Iconos y Efecto Hover */
         .contact-box {
             background-color: var(--accent-red);
-            padding: 40px;
+            padding: 40px 20px;
             border-radius: 12px;
             text-align: center;
             margin-top: 60px;
@@ -448,27 +448,39 @@
         .contact-box h3 {
             font-family: var(--font-title);
             font-size: 3.2rem;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
-        .contact-box p {
-            font-size: 1.15rem;
-            margin: 12px 0;
+        .contact-icons-container {
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 10px;
+            align-items: center;
+            gap: 35px;
+            flex-wrap: wrap;
         }
 
-        .contact-box i {
-            font-size: 1.3rem;
+        .contact-icon-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 75px;
+            height: 75px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
             color: #ffffff;
+            font-size: 2rem;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
-        .contact-box a {
-            color: #ffffff;
-            text-decoration: underline;
-            font-weight: bold;
+        .contact-icon-btn:hover {
+            background-color: #ffffff;
+            color: var(--accent-red);
+            transform: translateY(-8px) scale(1.1);
+            border-color: #ffffff;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
         }
 
         .closing-quote {
@@ -517,6 +529,14 @@
             }
             .modal-text {
                 font-size: 1rem;
+            }
+            .contact-icon-btn {
+                width: 65px;
+                height: 65px;
+                font-size: 1.7rem;
+            }
+            .contact-icons-container {
+                gap: 25px;
             }
         }
     </style>
@@ -694,12 +714,20 @@
             <iframe width="560" height="315" src="https://www.youtube.com/embed/yVlmvS5y2s0?si=4IV9brKio7QyA3mO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
-        <!-- Contacto -->
+        <!-- Contacto optimizado solo con iconos y efecto hover -->
         <section class="contact-box">
             <h3 class="animated-text">Trabajemos juntos</h3>
-            <p><i class="fa-brands fa-instagram"></i> <strong>Redes:</strong> <a href="https://instagram.com/susan.tiagoo" target="_blank">@SUSAN.TIAGOO</a></p>
-            <p><i class="fa-solid fa-phone"></i> <strong>Teléfono:</strong> <a href="tel:2474758126">247 47 5 81 26</a></p>
-            <p><i class="fa-solid fa-envelope"></i> <strong>Correo:</strong> <a href="mailto:susansantiagoch@gmail.com">SUSANSANTIAGOCH@GMAIL.COM</a></p>
+            <div class="contact-icons-container">
+                <a href="https://instagram.com/susan.tiagoo" target="_blank" class="contact-icon-btn" title="Instagram: @susan.tiagoo">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="tel:2474758126" class="contact-icon-btn" title="Teléfono: 247 47 5 81 26">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+                <a href="mailto:susansantiagoch@gmail.com" class="contact-icon-btn" title="Correo: susansantiagoch@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
         </section>
 
         <!-- Frase de cierre -->
