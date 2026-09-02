@@ -11,7 +11,7 @@
     <style>
         :root {
             --bg-teal: #0f6278;
-            --card-dark-teal: #114b5d;
+            --card-dark-teal: rgba(17, 75, 93, 0.88);
             --accent-red: #8b1e2b;
             --accent-pink: #d94b68;
             --paper-bg: #f4efe4;
@@ -27,34 +27,52 @@
             padding: 0;
         }
 
-        /* Fondo general simulando papel artesanal/texturizado */
+        /* Fondo general usando la ilustración de cactus en alta resolución */
         body {
-            background-color: var(--paper-bg);
-            background-image: 
-                radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 0),
-                linear-gradient(to bottom, rgba(244, 239, 228, 0.8), rgba(244, 239, 228, 0.8)),
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
-            background-size: 20px 20px, 100% 100%, 200px 200px;
+            background-image: url("image_34a9c1.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             color: var(--text-white);
             font-family: var(--font-body);
             line-height: 1.6;
-            padding: 30px 15px;
+            padding: 20px 10px;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Contenedor tipo estampa de grabado */
-        .page-canvas {
-            max-width: 1050px;
-            margin: 0 auto;
-            background-color: var(--bg-teal);
-            padding: 40px 35px;
-            border-radius: 4px;
+        /* Efecto de borde de hoja vieja / viñeta envejecida alrededor de la pantalla */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 999;
             box-shadow: 
-                0 0 0 12px var(--paper-bg),
-                0 0 0 16px rgba(15, 98, 120, 0.3),
-                0 15px 35px rgba(0,0,0,0.25);
+                inset 0 0 80px rgba(58, 38, 22, 0.7),
+                inset 0 0 160px rgba(26, 15, 8, 0.85);
+            border: 12px solid rgba(244, 239, 228, 0.25);
+        }
+
+        /* Contenedor extendido para aprovechar el ancho de la página */
+        .page-canvas {
+            max-width: 1350px;
+            margin: 0 auto;
+            background-color: rgba(15, 98, 120, 0.82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 45px 50px;
+            border-radius: 8px;
             position: relative;
-            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border: 3px dashed rgba(244, 239, 228, 0.4);
+            box-shadow: 
+                0 0 0 10px rgba(244, 239, 228, 0.15),
+                0 20px 50px rgba(0, 0, 0, 0.5),
+                inset 0 0 60px rgba(0, 0, 0, 0.3);
         }
 
         header {
@@ -64,29 +82,31 @@
 
         header h1 {
             font-family: var(--font-title);
-            font-size: 4.2rem;
+            font-size: 4.8rem;
             line-height: 1;
             margin-bottom: 5px;
             color: #ffffff;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
         }
 
         header h2 {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+            font-size: 1.3rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
             font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
         .year-tag {
             display: inline-block;
             background-color: var(--accent-red);
-            padding: 2px 14px;
+            padding: 3px 18px;
             border-radius: 4px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: bold;
-            margin-top: 10px;
-            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            margin-top: 12px;
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         /* Sección Perfil */
@@ -94,73 +114,62 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 30px;
+            gap: 40px;
             margin-bottom: 50px;
             position: relative;
         }
 
         .profile-img-container {
-            flex: 1 1 350px;
+            flex: 1 1 380px;
             text-align: center;
             position: relative;
         }
 
-        .profile-img-container::after {
-            content: "";
-            position: absolute;
-            bottom: -20px;
-            right: -10px;
-            width: 120px;
-            height: 140px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M45,10 C45,4.5 49.5,0 55,0 C60.5,0 65,4.5 65,10 L65,110 C65,115.5 60.5,120 55,120 C49.5,120 45,115.5 45,110 L45,10 Z' fill='%232e7d32' opacity='0.75'/%3E%3Cpath d='M20,35 C20,30 24,26 29,26 C34,26 38,30 38,35 L38,55 C38,60 42,64 47,64 L47,76 C37,76 29,68 29,58 L29,48 C24,48 20,44 20,39 L20,35 Z' fill='%232e7d32' opacity='0.75'/%3E%3Cpath d='M80,45 C80,40 76,36 71,36 C66,36 62,40 62,45 L62,65 C62,70 58,74 53,74 L53,86 C63,86 71,78 71,68 L71,58 C76,58 80,54 80,49 L80,45 Z' fill='%232e7d32' opacity='0.75'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-size: contain;
-            z-index: 1;
-            pointer-events: none;
-        }
-
         .profile-img-container img {
             width: 100%;
-            max-width: 380px;
+            max-width: 420px;
             height: auto;
-            border: 8px solid var(--paper-bg);
+            border: 10px solid var(--paper-bg);
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
             background-color: var(--paper-bg);
             position: relative;
             z-index: 2;
         }
 
         .profile-text {
-            flex: 2 1 450px;
+            flex: 2 1 500px;
             position: relative;
             z-index: 2;
         }
 
         .section-handwritten-title {
             font-family: var(--font-title);
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 15px;
             color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .about-p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             margin-bottom: 15px;
             text-align: justify;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
         .skills-header-container {
             text-align: center;
-            margin: 50px 0 30px;
+            margin: 60px 0 30px;
             position: relative;
         }
 
         .skills-header {
             font-family: var(--font-title);
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             display: inline-block;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .cactus-divider {
@@ -169,34 +178,36 @@
             align-items: center;
             gap: 15px;
             margin-top: -10px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .cactus-icon {
-            width: 24px;
-            height: 30px;
+            width: 28px;
+            height: 34px;
             fill: #ffffff;
-            opacity: 0.85;
+            opacity: 0.9;
+            filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.3));
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
             margin-bottom: 50px;
         }
 
         .skill-card {
             background-color: var(--card-dark-teal);
-            padding: 25px;
+            padding: 28px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border-top: 4px solid var(--accent-red);
-            border-left: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            border-top: 5px solid var(--accent-red);
+            border-left: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(4px);
         }
 
         .skill-card h3 {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 15px;
@@ -206,28 +217,28 @@
 
         .skill-card ul {
             list-style: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .skill-card ul li {
             margin-bottom: 8px;
             position: relative;
-            padding-left: 18px;
+            padding-left: 20px;
         }
 
         .skill-card ul li::before {
             content: "🌵";
             position: absolute;
             left: 0;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             top: 2px;
         }
 
         .skill-projects {
             margin-top: 20px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.9rem;
         }
 
         .skill-projects strong {
@@ -239,13 +250,13 @@
         /* Contenedor del Video */
         .video-container {
             width: 100%;
-            max-width: 800px;
-            margin: 30px auto 40px auto;
+            max-width: 900px;
+            margin: 40px auto 50px auto;
             position: relative;
             z-index: 2;
-            border: 8px solid var(--paper-bg);
+            border: 10px solid var(--paper-bg);
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
             background-color: #000;
             overflow: hidden;
             aspect-ratio: 16 / 9;
@@ -265,14 +276,15 @@
 
         .value-card {
             background-color: var(--card-dark-teal);
-            padding: 30px;
+            padding: 35px;
             border-radius: 12px;
             margin: 20px 0 30px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .value-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 10px;
             text-transform: uppercase;
         }
@@ -282,9 +294,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
+            gap: 50px;
             flex-wrap: wrap;
-            margin: 30px 0;
+            margin: 35px 0;
         }
 
         .project-item {
@@ -294,65 +306,66 @@
             text-decoration: none;
             color: #ffffff;
             transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            padding: 10px;
+            padding: 12px;
             border-radius: 16px;
         }
 
         .project-stamp {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             object-fit: contain;
-            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
             transition: filter 0.35s ease, transform 0.35s ease;
         }
 
         .project-label {
             margin-top: 14px;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             letter-spacing: 0.5px;
-            background-color: rgba(0, 0, 0, 0.25);
-            padding: 6px 18px;
+            background-color: rgba(0, 0, 0, 0.35);
+            padding: 6px 20px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             transition: all 0.35s ease;
         }
 
-        /* Efecto Hover mejorado sobre los proyectos destacados */
+        /* Efecto Hover sobre los proyectos destacados */
         .project-item:hover {
             transform: translateY(-10px) scale(1.06);
         }
 
         .project-item:hover .project-stamp {
-            filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.5)) brightness(1.08);
+            filter: drop-shadow(0 16px 25px rgba(0, 0, 0, 0.6)) brightness(1.1);
             transform: rotate(-2deg);
         }
 
         .project-item:hover .project-label {
             background-color: var(--accent-red);
-            border-color: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             color: #ffffff;
         }
 
         /* Contacto */
         .contact-box {
             background-color: var(--accent-red);
-            padding: 35px;
+            padding: 40px;
             border-radius: 12px;
             text-align: center;
-            margin-top: 50px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            margin-top: 60px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .contact-box h3 {
             font-family: var(--font-title);
-            font-size: 3rem;
+            font-size: 3.2rem;
             margin-bottom: 15px;
         }
 
         .contact-box p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             margin: 8px 0;
         }
 
@@ -365,8 +378,28 @@
         footer {
             text-align: center;
             margin-top: 40px;
-            font-size: 0.85rem;
-            opacity: 0.8;
+            font-size: 0.9rem;
+            opacity: 0.85;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .page-canvas {
+                padding: 25px 20px;
+            }
+            header h1 {
+                font-size: 3.5rem;
+            }
+            .section-handwritten-title, .skills-header {
+                font-size: 2.8rem;
+            }
+            .projects-container {
+                gap: 25px;
+            }
+            .project-stamp {
+                width: 140px;
+                height: 140px;
+            }
         }
     </style>
 </head>
@@ -510,12 +543,16 @@
             <h2 class="skills-header" style="display: block; text-align: center;">Proyectos Destacados</h2>
             <div class="projects-container">
                 <a href="https://canva.link/o6teby897ui5xz6" target="_blank" rel="noopener noreferrer" class="project-item">
-                    <img src="image_33e289.jpg" alt="Reafirma Spa" class="project-stamp">
+                    <img src="Gemini_Generated_Image_44aq744aq744aq74.jpg" alt="Reafirma Spa" class="project-stamp">
                     <span class="project-label">Reafirma Spa</span>
                 </a>
                 <a href="https://canva.link/ektt8ab2n0rpsss" target="_blank" rel="noopener noreferrer" class="project-item">
-                    <img src="image_343c60.jpg" alt="Producción Comercial" class="project-stamp">
+                    <img src="Gemini_Generated_Image_3ncxsy3ncxsy3ncx.jpg" alt="Producción Comercial" class="project-stamp">
                     <span class="project-label">Producción Comercial</span>
+                </a>
+                <a href="https://canva.link/don-sazon" target="_blank" rel="noopener noreferrer" class="project-item">
+                    <img src="Gemini_Generated_Image_pp00a6pp00a6pp00.jpg" alt="Don Sazón" class="project-stamp">
+                    <span class="project-label">Don Sazón</span>
                 </a>
             </div>
         </section>
