@@ -42,7 +42,25 @@
             position: relative;
         }
 
+        /* Capa de imagen tropical superpuesta con saturación al 15% y fusión */
         body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://img.magnific.com/vector-premium/hojas-flores-tropicales-efecto-impresion-pantalla-lindo-colorido-elemento-grafico-tela-texto_411588-873.jpg?semt=ais_hybrid&w=740&q=80");
+            background-size: cover;
+            background-position: center;
+            filter: saturate(15%);
+            opacity: 0.25;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        body::after {
             content: "";
             position: fixed;
             top: 0;
@@ -66,6 +84,7 @@
             padding: 45px 50px;
             border-radius: 8px;
             position: relative;
+            z-index: 2;
             border: 3px dashed rgba(244, 239, 228, 0.4);
             box-shadow: 
                 0 0 0 10px rgba(244, 239, 228, 0.15),
@@ -73,9 +92,25 @@
                 inset 0 0 60px rgba(0, 0, 0, 0.3);
         }
 
+        /* Animaciones para los textos */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated-text {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         header h1 {
@@ -105,6 +140,164 @@
             margin-top: 12px;
             box-shadow: 2px 4px 10px rgba(0,0,0,0.3);
             border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* --- Vitrola / Giradiscos --- */
+        .gramophone-widget {
+            background-color: var(--card-dark-teal);
+            border: 2px solid rgba(244, 239, 228, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 0 auto 40px auto;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .gramophone-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .vinyl-record {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #111 30%, #222 31%, #111 32%, #111 50%, #222 51%, #111 52%, #000 70%);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: spin 3s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .vinyl-record.playing {
+            animation-play-state: running;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .record-label {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-image: url('https://i.scdn.co/image/ab67616d00001e023e1e0b8e393f0db2405824e6');
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #111;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .record-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background-color: var(--paper-bg);
+            border-radius: 50%;
+            border: 2px solid #000;
+        }
+
+        .tonearm {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            width: 70px;
+            height: 80px;
+            border-right: 4px solid #d4af37;
+            border-bottom: 4px solid #d4af37;
+            border-bottom-right-radius: 40px;
+            transform-origin: top right;
+            transform: rotate(-25deg);
+            transition: transform 0.5s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .tonearm.playing {
+            transform: rotate(8deg);
+        }
+
+        .controls-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .play-btn {
+            background-color: var(--accent-red);
+            color: #fff;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.08);
+            background-color: var(--accent-pink);
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            max-width: 220px;
+        }
+
+        .volume-container i {
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--paper-bg);
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
         }
 
         /* Sección Perfil */
@@ -328,7 +521,7 @@
             color: #ffffff;
         }
 
-        /* Contacto con Íconos FontAwesome integrados */
+        /* Contacto */
         .contact-box {
             background-color: var(--accent-red);
             padding: 40px;
@@ -365,7 +558,6 @@
             font-weight: bold;
         }
 
-        /* Cierre con Frase Motivacional */
         .closing-quote {
             font-family: var(--font-title);
             font-size: 3.2rem;
@@ -416,10 +608,37 @@
 
         <!-- Header -->
         <header>
-            <h1>Susana Santiago</h1>
-            <h2>Book Profesional</h2>
-            <span class="year-tag">2026</span>
+            <h1 class="animated-text">Susana Santiago</h1>
+            <h2 class="animated-text">Book Profesional</h2>
+            <span class="year-tag animated-text">2026</span>
         </header>
+
+        <!-- Vitrola / Giradiscos con Ruta Alterna de Audio -->
+        <div class="gramophone-widget">
+            <div class="gramophone-container">
+                <div class="vinyl-record" id="vinylRecord">
+                    <div class="record-label"></div>
+                </div>
+                <div class="tonearm" id="tonearm"></div>
+            </div>
+            
+            <div class="controls-container">
+                <button class="play-btn" id="playBtn" title="Reproducir / Pausar">
+                    <i class="fa-solid fa-play" id="playIcon"></i>
+                </button>
+                <div class="volume-container">
+                    <i class="fa-solid fa-volume-high"></i>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.7">
+                </div>
+            </div>
+
+            <!-- Audio HTML5 con Ruta Alterna (fallback de formato) -->
+            <audio id="bgAudio" loop autoplay muted>
+                <source src="audio.mp3" type="audio/mpeg">
+                <source src="audio.ogg" type="audio/ogg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
 
         <!-- Sección Sobre Mí -->
         <section class="profile-section">
@@ -427,14 +646,14 @@
                 <img src="Gemini_Generated_Image_1na7th1na7th1na7.jpg" alt="Susana Santiago">
             </div>
             <div class="profile-text">
-                <h2 class="section-handwritten-title">Sobre mí</h2>
-                <p class="about-p">
+                <h2 class="section-handwritten-title animated-text">Sobre mí</h2>
+                <p class="about-p animated-text">
                     Soy Publicista y Project Manager por convicción. Me mueve convertir ideas en proyectos con mirada creativa, doy estructura y organización, tengo la capacidad de resolución necesaria para llevar una idea desde el concepto hasta la ejecución.
                 </p>
-                <p class="about-p">
+                <p class="about-p animated-text">
                     A lo largo de mi trayectoria he liderado equipos, coordinado proveedores y recursos, desarrollado estrategias y enfrentado proyectos que no siempre tenían un camino claro por ello reconozco que mi fortaleza está en encontrarlo.
                 </p>
-                <p class="about-p">
+                <p class="about-p animated-text">
                     Entender qué necesita un proyecto me permite anticipar obstáculos sin perder de vista a las personas que lo hacen posible. Lograr que las personas, las ideas y los recursos trabajen en la misma dirección, eso hago.
                 </p>
             </div>
@@ -442,7 +661,7 @@
 
         <!-- Sección SKILLS -->
         <div class="skills-header-container">
-            <h2 class="skills-header">Skills</h2>
+            <h2 class="skills-header animated-text">Skills</h2>
         </div>
 
         <section class="skills-grid">
@@ -524,8 +743,8 @@
 
         <!-- Sección Project Manager & Valor Profesional -->
         <section class="pm-section">
-            <h2 class="section-handwritten-title">Project Manager</h2>
-            <p class="about-p">
+            <h2 class="section-handwritten-title animated-text">Project Manager</h2>
+            <p class="about-p animated-text">
                 He convertido ideas en proyectos operativos, mejorando procesos, coordinando equipos y asegurando resultados concretos en tiempo y forma.
             </p>
 
@@ -545,7 +764,7 @@
 
         <!-- Sección de Proyectos Destacados -->
         <section>
-            <h2 class="skills-header" style="display: block; text-align: center;">Proyectos Destacados</h2>
+            <h2 class="skills-header animated-text" style="display: block; text-align: center;">Proyectos Destacados</h2>
             <div class="projects-container">
                 <a href="https://canva.link/relacionespublica" target="_blank" rel="noopener noreferrer" class="project-item">
                     <img src="3.png" alt="Reafirma Spa" class="project-stamp" onerror="this.onerror=null; this.src='3.jpg';">
@@ -566,16 +785,21 @@
             </div>
         </section>
 
-        <!-- Contacto con íconos estilizados -->
+        <!-- Nuevo video solicitado insertado antes de Trabajamos Juntos -->
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/yVlmvS5y2s0?si=4IV9brKio7QyA3mO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <!-- Contacto -->
         <section class="contact-box">
-            <h3>Trabajemos juntos</h3>
+            <h3 class="animated-text">Trabajemos juntos</h3>
             <p><i class="fa-brands fa-instagram"></i> <strong>Redes:</strong> <a href="https://instagram.com/susan.tiagoo" target="_blank">@SUSAN.TIAGOO</a></p>
             <p><i class="fa-solid fa-phone"></i> <strong>Teléfono:</strong> <a href="tel:2474758126">247 47 5 81 26</a></p>
             <p><i class="fa-solid fa-envelope"></i> <strong>Correo:</strong> <a href="mailto:susansantiagoch@gmail.com">SUSANSANTIAGOCH@GMAIL.COM</a></p>
         </section>
 
-        <!-- Frase de cierre con la tipografía manuscrita -->
-        <div class="closing-quote">
+        <!-- Frase de cierre -->
+        <div class="closing-quote animated-text">
             Creer para crear, crear para crecer
         </div>
 
@@ -585,5 +809,60 @@
 
     </div>
 
+    <!-- Controller Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bgAudio');
+            const playBtn = document.getElementById('playBtn');
+            const playIcon = document.getElementById('playIcon');
+            const volumeSlider = document.getElementById('volumeSlider');
+            const vinylRecord = document.getElementById('vinylRecord');
+            const tonearm = document.getElementById('tonearm');
+
+            audio.volume = volumeSlider.value;
+
+            const setPlayingState = (isPlaying) => {
+                if (isPlaying) {
+                    playIcon.className = 'fa-solid fa-pause';
+                    vinylRecord.classList.add('playing');
+                    tonearm.classList.add('playing');
+                } else {
+                    playIcon.className = 'fa-solid fa-play';
+                    vinylRecord.classList.remove('playing');
+                    tonearm.classList.remove('playing');
+                }
+            };
+
+            // Intento de reproducción automática
+            audio.play().then(() => {
+                audio.muted = false;
+                setPlayingState(true);
+            }).catch(() => {
+                const enableOnUserGesture = () => {
+                    audio.muted = false;
+                    audio.play();
+                    setPlayingState(true);
+                    document.removeEventListener('click', enableOnUserGesture);
+                };
+                document.addEventListener('click', enableOnUserGesture);
+            });
+
+            playBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (audio.paused) {
+                    audio.muted = false;
+                    audio.play();
+                    setPlayingState(true);
+                } else {
+                    audio.pause();
+                    setPlayingState(false);
+                }
+            });
+
+            volumeSlider.addEventListener('input', (e) => {
+                audio.volume = e.target.value;
+            });
+        });
+    </script>
 </body>
 </html>
