@@ -7,7 +7,7 @@
     <!-- Importación de fuentes y Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;600;700;800&family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -20,7 +20,6 @@
             --text-dark: #1f363d;
             --font-title: 'Caveat', cursive;
             --font-body: 'Montserrat', sans-serif;
-            --font-typewriter: 'Courier Prime', monospace;
         }
 
         * {
@@ -79,7 +78,7 @@
         .page-canvas {
             max-width: 1350px;
             margin: 0 auto;
-            background-color: rgba(11, 77, 94, 0.92); /* Más sólido para que no se pierda el texto */
+            background-color: rgba(11, 77, 94, 0.92);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             padding: 45px 50px;
@@ -142,14 +141,14 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* --- Ventana Emergente con Efecto Máquina de Escribir --- */
+        /* --- Ventana Emergente Limpia (Solo Hoja y Botón) --- */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.88);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -158,66 +157,41 @@
         }
 
         .modal-content {
-            background-color: #113844;
-            border: 3px solid var(--paper-bg);
-            padding: 30px;
-            border-radius: 12px;
-            max-width: 600px;
-            width: 90%;
+            background: transparent;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            position: relative;
+            max-width: 650px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
         }
 
         .modal-img {
             width: 100%;
-            max-height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-
-        /* Efecto máquina de escribir */
-        .typewriter-text {
-            font-family: var(--font-typewriter);
-            font-size: 1.1rem;
-            color: var(--paper-bg);
-            overflow: hidden;
-            border-right: .15em solid var(--accent-pink);
-            white-space: pre-wrap;
-            margin: 0 auto 20px auto;
-            letter-spacing: .1em;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-            text-align: left;
-            line-height: 1.5;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--accent-pink); }
+            height: auto;
+            object-fit: contain;
+            border-radius: 6px;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.7));
         }
 
         .modal-close-btn {
             background-color: var(--accent-red);
             color: #fff;
             border: none;
-            padding: 10px 25px;
-            font-size: 1rem;
+            padding: 12px 35px;
+            font-size: 1.1rem;
             font-weight: bold;
-            border-radius: 20px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: background 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
         .modal-close-btn:hover {
             background-color: var(--accent-pink);
+            transform: scale(1.05);
         }
 
         /* Sección Perfil */
@@ -525,11 +499,10 @@
 </head>
 <body>
 
-    <!-- Ventana Emergente con Imagen y Efecto Máquina de Escribir -->
+    <!-- Ventana Emergente con la hoja limpia saliendo de la máquina de escribir -->
     <div class="modal-overlay" id="welcomeModal">
         <div class="modal-content">
-            <img src="ChatGPT Image 1 sept 2026, 21_43_17.png" alt="Bienvenida" class="modal-img" onerror="this.onerror=null; this.src='Gemini_Generated_Image_1na7th1na7th1na7.jpg';">
-            <div class="typewriter-text" id="typewriterText">Bienvenidos al Book Profesional de Susana Santiago. Explora la trayectoria, creatividad y gestión de proyectos.</div>
+            <img src="ChatGPT Image 1 sept 2026, 21_43_17.png" alt="Hoja de Máquina de Escribir" class="modal-img" onerror="this.onerror=null; this.src='Gemini_Generated_Image_1na7th1na7th1na7.jpg';">
             <button class="modal-close-btn" id="closeModalBtn">Entrar al Book</button>
         </div>
     </div>
@@ -543,7 +516,7 @@
             <span class="year-tag animated-text">2026</span>
         </header>
 
-        <!-- Audio Oculto de Fondo con NEREIDAS - ACERINA Y SU DANZONERA y Volumen al ~20% -->
+        <!-- Audio Oculto: NEREIDAS - ACERINA Y SU DANZONERA -->
         <audio id="bgAudio" loop autoplay muted>
             <source src="NEREIDAS - ACERINA Y SU DANZONERA.mp3" type="audio/mpeg">
             <source src="NEREIDAS - ACERINA Y SU DANZONERA.ogg" type="audio/ogg">
@@ -719,21 +692,20 @@
 
     </div>
 
-    <!-- Script de Control de Audio y Modal -->
+    <!-- Script de Control de Audio (20% primeros 15s, luego 5%) y Modal -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const audio = document.getElementById('bgAudio');
             const welcomeModal = document.getElementById('welcomeModal');
             const closeModalBtn = document.getElementById('closeModalBtn');
 
-            // Volumen fijado al ~20% (0.2)
+            // Iniciar a 20% de volumen (0.2)
             audio.volume = 0.2;
 
-            // Intentar reproducción automática al cargar
+            // Reproducción automática al cargar
             const startAudio = () => {
                 audio.muted = false;
                 audio.play().catch(() => {
-                    // Si el navegador bloquea autoplay, se activa al primer clic del usuario
                     const enableAudio = () => {
                         audio.muted = false;
                         audio.play();
@@ -745,7 +717,12 @@
 
             startAudio();
 
-            // Cerrar modal de bienvenida al hacer clic en el botón
+            // Bajar el volumen al 5% (0.05) transcurridos 15 segundos
+            setTimeout(() => {
+                audio.volume = 0.05;
+            }, 15000);
+
+            // Cerrar modal de bienvenida
             closeModalBtn.addEventListener('click', () => {
                 welcomeModal.style.opacity = '0';
                 welcomeModal.style.transition = 'opacity 0.4s ease';
@@ -753,7 +730,6 @@
                     welcomeModal.style.display = 'none';
                 }, 400);
                 
-                // Asegurar reproducción de audio al interactuar con el modal
                 audio.muted = false;
                 audio.play();
             });
