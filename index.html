@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book - Susana Santiago | Publicista y Project Manager</title>
-    <!-- Importación de fuentes estilo caligráfico y sans-serif modernas -->
+    <!-- Importación de fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
             overflow-x: hidden;
         }
 
-        /* Contenedor tipo estampa de grabado con bordes de lienzo de papel */
+        /* Contenedor tipo estampa de grabado */
         .page-canvas {
             max-width: 1050px;
             margin: 0 auto;
@@ -89,7 +89,7 @@
             box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
         }
 
-        /* Sección Perfil con la fotografía y elemento decorativo Cactus */
+        /* Sección Perfil */
         .profile-section {
             display: flex;
             flex-wrap: wrap;
@@ -105,7 +105,6 @@
             position: relative;
         }
 
-        /* Elemento cactus decorativo flotante de fondo */
         .profile-img-container::after {
             content: "";
             position: absolute;
@@ -132,28 +131,6 @@
             z-index: 2;
         }
 
-        /* Contenedor del Video de YouTube ubicado antes de Project Manager */
-        .video-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 30px auto 40px auto;
-            position: relative;
-            z-index: 2;
-            border: 8px solid var(--paper-bg);
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            background-color: #000;
-            overflow: hidden;
-            aspect-ratio: 16 / 9;
-        }
-
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            display: block;
-        }
-
         .profile-text {
             flex: 2 1 450px;
             position: relative;
@@ -172,15 +149,6 @@
             font-weight: 600;
             margin-bottom: 15px;
             text-align: justify;
-        }
-
-        .embed-slot {
-            background: rgba(0, 0, 0, 0.2);
-            border: 2px dashed rgba(255, 255, 255, 0.4);
-            padding: 25px;
-            text-align: center;
-            border-radius: 12px;
-            margin: 30px 0;
         }
 
         .skills-header-container {
@@ -258,7 +226,7 @@
         .skill-projects {
             margin-top: 20px;
             padding-top: 10px;
-            border-top: 1px stroke rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.85rem;
         }
 
@@ -266,6 +234,28 @@
             display: block;
             color: #fff;
             margin-bottom: 3px;
+        }
+
+        /* Contenedor del Video */
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto 40px auto;
+            position: relative;
+            z-index: 2;
+            border: 8px solid var(--paper-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            background-color: #000;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
         }
 
         .pm-section {
@@ -287,6 +277,65 @@
             text-transform: uppercase;
         }
 
+        /* Sección Proyectos Destacados */
+        .projects-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .project-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 10px;
+            border-radius: 16px;
+        }
+
+        .project-stamp {
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+            transition: filter 0.35s ease, transform 0.35s ease;
+        }
+
+        .project-label {
+            margin-top: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background-color: rgba(0, 0, 0, 0.25);
+            padding: 6px 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.35s ease;
+        }
+
+        /* Efecto Hover mejorado sobre los proyectos destacados */
+        .project-item:hover {
+            transform: translateY(-10px) scale(1.06);
+        }
+
+        .project-item:hover .project-stamp {
+            filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.5)) brightness(1.08);
+            transform: rotate(-2deg);
+        }
+
+        .project-item:hover .project-label {
+            background-color: var(--accent-red);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+        }
+
+        /* Contacto */
         .contact-box {
             background-color: var(--accent-red);
             padding: 35px;
@@ -435,7 +484,7 @@
 
         </section>
 
-        <!-- Video de YouTube (Ubicado justo antes del título Project Manager) -->
+        <!-- Video de YouTube -->
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/DtQ46H6gPXg?si=t_yytE97u70cH3Ig" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
@@ -456,12 +505,18 @@
             </div>
         </section>
 
-        <!-- Bloque de Proyectos Destacados (Espacio para incrustar elementos) -->
+        <!-- Sección de Proyectos Destacados -->
         <section>
             <h2 class="skills-header" style="display: block; text-align: center;">Proyectos Destacados</h2>
-            <div class="embed-slot">
-                <p><strong>[ÁREA PARA CONTENIDO INCRUSTADO DE PROYECTOS]</strong></p>
-                <p>Inserta aquí el código HTML/JS de tu galería de portafolio o reproductor.</p>
+            <div class="projects-container">
+                <a href="https://canva.link/o6teby897ui5xz6" target="_blank" rel="noopener noreferrer" class="project-item">
+                    <img src="image_33e289.jpg" alt="Reafirma Spa" class="project-stamp">
+                    <span class="project-label">Reafirma Spa</span>
+                </a>
+                <a href="https://canva.link/ektt8ab2n0rpsss" target="_blank" rel="noopener noreferrer" class="project-item">
+                    <img src="image_343c60.jpg" alt="Producción Comercial" class="project-stamp">
+                    <span class="project-label">Producción Comercial</span>
+                </a>
             </div>
         </section>
 
