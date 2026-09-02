@@ -544,13 +544,6 @@
             <span class="year-tag animated-text">2026</span>
         </header>
 
-        <!-- Audio Oculto: NEREIDAS - ACERINA Y SU DANZONERA -->
-        <audio id="bgAudio" loop autoplay muted>
-            <source src="NEREIDAS - ACERINA Y SU DANZONERA.mp3" type="audio/mpeg">
-            <source src="NEREIDAS - ACERINA Y SU DANZONERA.ogg" type="audio/ogg">
-            Tu navegador no soporta el elemento de audio.
-        </audio>
-
         <!-- Sección Sobre Mí -->
         <section class="profile-section">
             <div class="profile-img-container">
@@ -720,35 +713,11 @@
 
     </div>
 
-    <!-- Script de Control de Audio y Modal -->
+    <!-- Script de Control exclusivo para la Ventana Emergente -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const audio = document.getElementById('bgAudio');
             const welcomeModal = document.getElementById('welcomeModal');
             const closeModalBtn = document.getElementById('closeModalBtn');
-
-            // Iniciar a 20% de volumen (0.2)
-            audio.volume = 0.2;
-
-            // Reproducción automática al cargar
-            const startAudio = () => {
-                audio.muted = false;
-                audio.play().catch(() => {
-                    const enableAudio = () => {
-                        audio.muted = false;
-                        audio.play();
-                        document.removeEventListener('click', enableAudio);
-                    };
-                    document.addEventListener('click', enableAudio);
-                });
-            };
-
-            startAudio();
-
-            // Bajar el volumen al 5% (0.05) transcurridos 15 segundos
-            setTimeout(() => {
-                audio.volume = 0.05;
-            }, 15000);
 
             // Cerrar modal de bienvenida
             closeModalBtn.addEventListener('click', () => {
@@ -757,9 +726,6 @@
                 setTimeout(() => {
                     welcomeModal.style.display = 'none';
                 }, 400);
-                
-                audio.muted = false;
-                audio.play();
             });
         });
     </script>
