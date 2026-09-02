@@ -115,6 +115,26 @@
             z-index: 2;
         }
 
+        /* Contenedor adaptativo para el Video de YouTube en reemplazo de la imagen */
+        .video-container {
+            flex: 1 1 350px;
+            position: relative;
+            z-index: 2;
+            border: 8px solid #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            background-color: #000;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
         .profile-text {
             flex: 2 1 450px;
             position: relative;
@@ -290,7 +310,7 @@
             <span class="year-tag">2026</span>
         </header>
 
-        <!-- Sección Sobre Mí con Fotografía Reemplazada -->
+        <!-- Sección Sobre Mí -->
         <section class="profile-section">
             <div class="profile-img-container">
                 <img src="Gemini_Generated_Image_1na7th1na7th1na7.jpg" alt="Susana Santiago">
@@ -308,8 +328,6 @@
                 </p>
             </div>
         </section>
-
-        <!-- REEMPLAZAR CÓDIGO: Insertar elemento interactivo aquí si se desea -->
 
         <!-- Sección SKILLS con detalles decorativos -->
         <div class="skills-header-container">
@@ -395,7 +413,7 @@
 
         </section>
 
-        <!-- Sección Project Manager & Valor Profesional -->
+        <!-- Sección Project Manager & Valor Profesional con Video de YouTube -->
         <section class="profile-section">
             <div class="profile-text">
                 <h2 class="section-handwritten-title">Project Manager</h2>
@@ -411,15 +429,16 @@
                     <p class="about-p">La creación y ejecución de proyectos, eventos y marcas, abarcando desde la planeación hasta la operación, con enfoque en resultados, optimización de procesos y producción de contenido.</p>
                 </div>
             </div>
-            <div class="profile-img-container">
-                <img src="imagen_2.jpg" alt="Susana Santiago - Project Manager">
+            
+            <!-- Reemplazo de imagen_2.jpg por el iframe del video de YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/DtQ46H6gPXg?si=t_yytE97u70cH3Ig" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </section>
 
         <!-- Bloque de Proyectos Destacados (Espacio para incrustar elementos) -->
         <section>
             <h2 class="skills-header" style="display: block; text-align: center;">Proyectos Destacados</h2>
-            <!-- REEMPLAZAR CÓDIGO: Insertar aquí iFrame de portafolio, carrusel de imágenes o videos de proyectos -->
             <div class="embed-slot">
                 <p><strong>[ÁREA PARA CONTENIDO INCRUSTADO DE PROYECTOS]</strong></p>
                 <p>Inserta aquí el código HTML/JS de tu galería de portafolio o reproductor.</p>
@@ -432,7 +451,6 @@
             <p><strong>Redes:</strong> <a href="https://instagram.com/susan.tiagoo" target="_blank">@SUSAN.TIAGOO</a></p>
             <p><strong>Teléfono:</strong> <a href="tel:2474758126">247 47 5 81 26</a></p>
             <p><strong>Correo:</strong> <a href="mailto:susansantiagoch@gmail.com">SUSANSANTIAGOCH@GMAIL.COM</a></p>
-            <!-- REEMPLAZAR CÓDIGO: Insertar aquí formulario de contacto o botones a redes sociales -->
         </section>
 
         <footer>
