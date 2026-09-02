@@ -141,7 +141,7 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* --- Ventana Emergente Limpia (Solo Hoja y Botón) --- */
+        /* --- Ventana Emergente Limpia (Solo la nueva imagen y botón) --- */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -499,10 +499,10 @@
 </head>
 <body>
 
-    <!-- Ventana Emergente con la hoja limpia saliendo de la máquina de escribir -->
+    <!-- Ventana Emergente con la nueva imagen del texto proporcionado -->
     <div class="modal-overlay" id="welcomeModal">
         <div class="modal-content">
-            <img src="ChatGPT Image 1 sept 2026, 21_43_17.png" alt="Hoja de Máquina de Escribir" class="modal-img" onerror="this.onerror=null; this.src='Gemini_Generated_Image_1na7th1na7th1na7.jpg';">
+            <img src="ChatGPT Image 1 sept 2026, 21_43_17.png" alt="Te sorprenderías de las cosas que he logrado..." class="modal-img">
             <button class="modal-close-btn" id="closeModalBtn">Entrar al Book</button>
         </div>
     </div>
@@ -692,7 +692,7 @@
 
     </div>
 
-    <!-- Script de Control de Audio (20% primeros 15s, luego 5%) y Modal -->
+    <!-- Script de Control de Audio y Modal -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const audio = document.getElementById('bgAudio');
